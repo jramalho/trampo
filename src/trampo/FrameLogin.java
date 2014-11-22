@@ -23,9 +23,8 @@ public class FrameLogin extends javax.swing.JFrame {
     public FrameLogin() {
     initComponents();
     URL iconURL = getClass().getResource("/trampo/hotelicon.png");
-// iconURL is null when not found
-        ImageIcon icon = new ImageIcon(iconURL);
-        this.setIconImage(icon.getImage());
+    ImageIcon icon = new ImageIcon(iconURL);
+    this.setIconImage(icon.getImage());
 
     }
 
@@ -156,7 +155,7 @@ public class FrameLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

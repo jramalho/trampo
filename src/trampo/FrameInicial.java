@@ -6,6 +6,8 @@
 
 package trampo;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -20,6 +22,9 @@ public class FrameInicial extends javax.swing.JFrame {
      */
     public FrameInicial() {
         initComponents();
+        URL iconURL = getClass().getResource("/trampo/hotelicon.png");
+    ImageIcon icon = new ImageIcon(iconURL);
+    this.setIconImage(icon.getImage());
         nameUser.setText("pombaloca");
     }
 
@@ -38,17 +43,23 @@ public class FrameInicial extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         logout = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        log_out = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        cadhospede = new javax.swing.JMenuItem();
+        pesquisahospede = new javax.swing.JMenuItem();
+        jmenublalblabla = new javax.swing.JMenu();
+        quart = new javax.swing.JMenuItem();
+        cadQuarto = new javax.swing.JMenuItem();
+        func = new javax.swing.JMenu();
+        cadfunc = new javax.swing.JMenuItem();
+        pesqfunc = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        cadservico = new javax.swing.JMenuItem();
+        servico = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        pesqestoq = new javax.swing.JMenuItem();
+        estoque = new javax.swing.JMenuItem();
         about = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,54 +79,114 @@ public class FrameInicial extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
         logout.add(jMenuItem1);
 
-        jMenuItem2.setText("Logout");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        log_out.setText("Logout");
+        log_out.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                log_outActionPerformed(evt);
             }
         });
-        logout.add(jMenuItem2);
+        logout.add(log_out);
 
         jMenuBar1.add(logout);
 
         jMenu1.setText("Hóspedes");
 
-        jMenuItem3.setText("Cadastro Hóspede");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        cadhospede.setText("Cadastro Hóspede");
+        cadhospede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                cadhospedeActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(cadhospede);
+
+        pesquisahospede.setText("Pesquisa Hóspede");
+        pesquisahospede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisahospedeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(pesquisahospede);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText("Funcionários");
+        jmenublalblabla.setText("Quartos");
 
-        jMenuItem5.setText("PesquisaFuncionario");
-        jMenu3.add(jMenuItem5);
+        quart.setText("Quartos");
+        quart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quartActionPerformed(evt);
+            }
+        });
+        jmenublalblabla.add(quart);
 
-        jMenuItem6.setText("Serviços");
-        jMenu3.add(jMenuItem6);
+        cadQuarto.setText("Cadastro Quarto");
+        cadQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadQuartoActionPerformed(evt);
+            }
+        });
+        jmenublalblabla.add(cadQuarto);
 
-        jMenuItem7.setText("jMenuItem7");
-        jMenu3.add(jMenuItem7);
+        jMenuBar1.add(jmenublalblabla);
 
-        jMenuBar1.add(jMenu3);
+        func.setText("Funcionários");
+
+        cadfunc.setText("Cadastro Funcionario");
+        cadfunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadfuncActionPerformed(evt);
+            }
+        });
+        func.add(cadfunc);
+
+        pesqfunc.setText("PesquisaFuncionario");
+        pesqfunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesqfuncActionPerformed(evt);
+            }
+        });
+        func.add(pesqfunc);
+
+        jMenuBar1.add(func);
+
+        jMenu2.setText("Serviços");
+
+        cadservico.setText("Cadastro de serviço");
+        cadservico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadservicoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(cadservico);
+
+        servico.setText("Serviços");
+        servico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servicoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(servico);
+
+        jMenuBar1.add(jMenu2);
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Controle de Estoque");
 
-        jMenuItem8.setText("Pesquisa Estoque");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        pesqestoq.setText("Pesquisa Estoque");
+        pesqestoq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                pesqestoqActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem8);
+        jMenu5.add(pesqestoq);
 
-        jMenuItem9.setText("jMenuItem9");
-        jMenu5.add(jMenuItem9);
+        estoque.setText("Estoque");
+        estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estoqueActionPerformed(evt);
+            }
+        });
+        jMenu5.add(estoque);
 
         jMenuBar1.add(jMenu5);
 
@@ -146,7 +217,7 @@ public class FrameInicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameUser, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(nameUser, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -156,23 +227,28 @@ public class FrameInicial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(530, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void log_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_outActionPerformed
+             this.dispose();
+        FrameLogin log = new FrameLogin();
+        log.setVisible(true);   
+    }//GEN-LAST:event_log_outActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    private void pesqestoqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqestoqActionPerformed
+        FormPesquisaEstoque pesqestoq = new FormPesquisaEstoque();
+        pesqestoq.setVisible(true);
+    }//GEN-LAST:event_pesqestoqActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-//blablabla
-        // TODO add your handling code here:
+        this.dispose();
+        FrameLogin log = new FrameLogin();
+        log.setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
     private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
@@ -183,11 +259,51 @@ public class FrameInicial extends javax.swing.JFrame {
 JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about");
     }//GEN-LAST:event_aboutMenuSelected
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        dispose();
+    private void cadhospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadhospedeActionPerformed
         FrameCadHospedes framecadhospedes = new FrameCadHospedes();
         framecadhospedes.setVisible(true);    
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_cadhospedeActionPerformed
+
+    private void pesquisahospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisahospedeActionPerformed
+        FormPesquisaHospede formpesquisahosp = new FormPesquisaHospede();
+        formpesquisahosp.setVisible(true);    
+    }//GEN-LAST:event_pesquisahospedeActionPerformed
+
+    private void pesqfuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqfuncActionPerformed
+        FormPesquisaFuncionario formpesquisafunc = new FormPesquisaFuncionario();
+        formpesquisafunc.setVisible(true);    
+    }//GEN-LAST:event_pesqfuncActionPerformed
+
+    private void cadfuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadfuncActionPerformed
+        FormFuncionario1 formcadfunc = new FormFuncionario1();
+        formcadfunc.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadfuncActionPerformed
+
+    private void cadservicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadservicoActionPerformed
+        FormCadastroServico cadservice = new FormCadastroServico();
+        cadservice.setVisible(true);    
+    }//GEN-LAST:event_cadservicoActionPerformed
+
+    private void servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicoActionPerformed
+        FormServico serv = new FormServico();
+        serv.setVisible(true);
+    }//GEN-LAST:event_servicoActionPerformed
+
+    private void estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estoqueActionPerformed
+        FormEstoque estoq = new FormEstoque();
+        estoq.setVisible(true);
+    }//GEN-LAST:event_estoqueActionPerformed
+
+    private void cadQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadQuartoActionPerformed
+        FormCadastroQuarto cadquart = new FormCadastroQuarto();
+        cadquart.setVisible(true);
+    }//GEN-LAST:event_cadQuartoActionPerformed
+
+    private void quartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quartActionPerformed
+        FormQuartos quarts = new FormQuartos();
+        quarts.setVisible(true);
+    }//GEN-LAST:event_quartActionPerformed
 
     private void testeMenuSelected(javax.swing.event.MenuEvent evt){
 JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about");
@@ -205,7 +321,7 @@ JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about"
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -223,6 +339,7 @@ JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about"
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FrameInicial().setVisible(true);
             }
@@ -231,22 +348,28 @@ JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about"
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu about;
+    private javax.swing.JMenuItem cadQuarto;
+    private javax.swing.JMenuItem cadfunc;
+    private javax.swing.JMenuItem cadhospede;
+    private javax.swing.JMenuItem cadservico;
+    private javax.swing.JMenuItem estoque;
+    private javax.swing.JMenu func;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JMenu jmenublalblabla;
+    private javax.swing.JMenuItem log_out;
     private javax.swing.JMenu logout;
     private javax.swing.JTextField nameUser;
+    private javax.swing.JMenuItem pesqestoq;
+    private javax.swing.JMenuItem pesqfunc;
+    private javax.swing.JMenuItem pesquisahospede;
+    private javax.swing.JMenuItem quart;
+    private javax.swing.JMenuItem servico;
     // End of variables declaration//GEN-END:variables
 }

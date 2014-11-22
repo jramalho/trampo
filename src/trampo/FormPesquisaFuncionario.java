@@ -6,6 +6,9 @@
 
 package trampo;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Jol
@@ -16,7 +19,9 @@ public class FormPesquisaFuncionario extends javax.swing.JFrame {
      * Creates new form FormPesquisaFuncionario
      */
     public FormPesquisaFuncionario() {
-        initComponents();
+        initComponents();URL iconURL = getClass().getResource("/trampo/hotelicon.png");
+    ImageIcon icon = new ImageIcon(iconURL);
+    this.setIconImage(icon.getImage());
     }
 
     /**
@@ -42,7 +47,7 @@ public class FormPesquisaFuncionario extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +94,11 @@ public class FormPesquisaFuncionario extends javax.swing.JFrame {
         jLabel5.setText("Area de atuação");
 
         jButton1.setText("Pesquisar!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,11 +137,16 @@ public class FormPesquisaFuncionario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//if match show FormFuncionario;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

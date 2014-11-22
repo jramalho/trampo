@@ -6,6 +6,9 @@
 
 package trampo;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Jol
@@ -17,6 +20,9 @@ public class FormPesquisaEstoque extends javax.swing.JFrame {
      */
     public FormPesquisaEstoque() {
         initComponents();
+        URL iconURL = getClass().getResource("/trampo/hotelicon.png");
+    ImageIcon icon = new ImageIcon(iconURL);
+    this.setIconImage(icon.getImage());
     }
 
     /**
@@ -40,7 +46,7 @@ public class FormPesquisaEstoque extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Código Produto");
 
@@ -125,6 +131,7 @@ public class FormPesquisaEstoque extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
