@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/FormFuncionario.java</file>
             <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/Model/ModelFuncionario.java</file>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/FormEditEstoque.java</file>
             <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/Model/ModelServico.java</file>
             <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/Model/ModelQuarto.java</file>
             <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/Model/ModelEstoque.java</file>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/FormEstoque.java</file>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/FormCadastroServico.java</file>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/Controller/ControlData.java</file>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/FrameCadHospedes.java</file>
+            <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/FormCadastroQuarto.java</file>
             <file>file:/C:/Users/Jol/Documents/NetBeansProjects/trampo/src/trampo/Model/ModelHospede.java</file>
         </group>
     </open-files>

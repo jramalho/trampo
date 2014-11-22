@@ -7,6 +7,9 @@
 package trampo;
 
 import java.net.URL;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -47,9 +50,9 @@ public class FrameCadHospedes extends javax.swing.JFrame {
         campcpf = new javax.swing.JFormattedTextField();
         camprg = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        campidade = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         limpar = new javax.swing.JButton();
+        campidade = new javax.swing.JFormattedTextField();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -76,19 +79,24 @@ public class FrameCadHospedes extends javax.swing.JFrame {
             }
         });
 
+        try {
+            campcpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            camprg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         camprg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 camprgActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Idade");
-
-        campidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campidadeActionPerformed(evt);
-            }
-        });
+        jLabel9.setText("Data de Nascimento");
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +111,13 @@ public class FrameCadHospedes extends javax.swing.JFrame {
                 limparActionPerformed(evt);
             }
         });
+
+        try {
+            campidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        campidade.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,14 +135,6 @@ public class FrameCadHospedes extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(campnome, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(camptipohospede, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(campidade, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
@@ -138,6 +145,14 @@ public class FrameCadHospedes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(limpar)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campidade)
+                    .addComponent(camptipohospede, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,10 +216,6 @@ public class FrameCadHospedes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_camprgActionPerformed
 
-    private void campidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campidadeActionPerformed
-
     private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
          campcpf.setText("");
         campidade.setText("");
@@ -217,7 +228,18 @@ public class FrameCadHospedes extends javax.swing.JFrame {
     }//GEN-LAST:event_limparActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//Implementar cod salvar
+        Controller.ControlData data = new Controller.ControlData();
+        trampo.Model.ModelHospede hosp = new trampo.Model.ModelHospede();
+        hosp.setNome_cliente(campnome.getText());
+        hosp.setCPF_cliente(campcpf.getText());
+        hosp.setTipo_cliente(camptipohospede.getText());
+        hosp.setRG_cliente(camprg.getText());
+        try {
+            hosp.setData_nasc_cliente(data.ConvertData(campidade.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(FrameCadHospedes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(hosp.getNome_cliente());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -261,7 +283,7 @@ public class FrameCadHospedes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField campcpf;
-    private javax.swing.JTextField campidade;
+    private javax.swing.JFormattedTextField campidade;
     private javax.swing.JTextField campnome;
     private javax.swing.JTextField camppag;
     private javax.swing.JFormattedTextField camprg;
