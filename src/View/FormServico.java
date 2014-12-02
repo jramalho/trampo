@@ -7,7 +7,14 @@
 package View;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,12 +22,31 @@ import javax.swing.ImageIcon;
  */
 public class FormServico extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormPesquisaServico
-     */
-    public FormServico() {
+public void FillTable() throws SQLException{
+    Controller.ControlDBServico dbs = new Controller.ControlDBServico();
+    ResultSet rs = dbs.FillTable();
+    ResultSetMetaData rsmeta = rs.getMetaData();
+    int col = rsmeta.getColumnCount();
+    DefaultTableModel dtm = new  DefaultTableModel();
+    Vector nom_col = new Vector();
+    Vector info = new Vector();
+    for(int i=1;i<col;i++){
+        nom_col.addElement(rsmeta.getColumnName(i));
+    }
+    dtm.setColumnIdentifiers(nom_col);
+    while(rs.next()){
+        info= new Vector();
+        for (int j=1;j<col;j++){
+            info.addElement(rs.getString(j));
+        }
+    dtm.addRow(info);
+    }
+    tableestoque.setModel(dtm);
+}    
+public FormServico() throws SQLException {
         initComponents();
-        URL iconURL = getClass().getResource("/trampo/hotelicon.png");
+        FillTable();
+        URL iconURL = getClass().getResource("/hotelicon.png");
     ImageIcon icon = new ImageIcon(iconURL);
     this.setIconImage(icon.getImage());
     }
@@ -36,7 +62,7 @@ public class FormServico extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableestoque = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,7 +77,7 @@ public class FormServico extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableestoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -62,7 +88,7 @@ public class FormServico extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableestoque);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,7 +147,11 @@ public class FormServico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormServico().setVisible(true);
+                try {
+                    new FormServico().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FormServico.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -129,6 +159,6 @@ public class FormServico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableestoque;
     // End of variables declaration//GEN-END:variables
 }

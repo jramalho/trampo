@@ -11,9 +11,12 @@ package Model;
  * @author Jol
  */
 public class ModelServico {
-    private int cod_servico;
-    private String tipo_servico;
-    private String area_servico;
+    public int codfunc;
+    public int cod_servico;
+    public String tipo_servico;
+    public String area_servico;
+    public int codestoque;
+    
 
     public int getCod_servico() {
         return cod_servico;
@@ -38,5 +41,18 @@ public class ModelServico {
     public void setArea_servico(String area_servico) {
         this.area_servico = area_servico;
     }
-    
+
+    public int getCodfunc() {
+        return codfunc;
+    }
+
+    public void setCodfunc(int codfunc) {
+        this.codfunc = codfunc;
+    }
+    public int getCodestoque(){
+        return codestoque;
+    }
+    public void setCodestoque(int codestoque){
+        this.codestoque=codestoque;
+    }
 }

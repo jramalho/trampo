@@ -7,6 +7,9 @@
 package View;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -22,10 +25,10 @@ public class FrameInicial extends javax.swing.JFrame {
      */
     public FrameInicial() {
         initComponents();
-        URL iconURL = getClass().getResource("/trampo/hotelicon.png");
+        URL iconURL = getClass().getResource("/hotelicon.png");
     ImageIcon icon = new ImageIcon(iconURL);
     this.setIconImage(icon.getImage());
-        nameUser.setText("pombaloca");
+    
     }
 
     /**
@@ -42,13 +45,13 @@ public class FrameInicial extends javax.swing.JFrame {
         nameUser = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         logout = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         log_out = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         cadhospede = new javax.swing.JMenuItem();
         pesquisahospede = new javax.swing.JMenuItem();
         jmenublalblabla = new javax.swing.JMenu();
         quart = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         cadQuarto = new javax.swing.JMenuItem();
         func = new javax.swing.JMenu();
         cadfunc = new javax.swing.JMenuItem();
@@ -58,7 +61,7 @@ public class FrameInicial extends javax.swing.JFrame {
         servico = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        pesqestoq = new javax.swing.JMenuItem();
+        editestoque = new javax.swing.JMenuItem();
         estoque = new javax.swing.JMenuItem();
         about = new javax.swing.JMenu();
 
@@ -75,9 +78,6 @@ public class FrameInicial extends javax.swing.JFrame {
                 logoutActionPerformed(evt);
             }
         });
-
-        jMenuItem1.setText("jMenuItem1");
-        logout.add(jMenuItem1);
 
         log_out.setText("Logout");
         log_out.addActionListener(new java.awt.event.ActionListener() {
@@ -119,15 +119,19 @@ public class FrameInicial extends javax.swing.JFrame {
         });
         jmenublalblabla.add(quart);
 
+        jMenuBar1.add(jmenublalblabla);
+
+        jMenu3.setText("Hospedagem");
+
         cadQuarto.setText("Cadastro Quarto");
         cadQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadQuartoActionPerformed(evt);
             }
         });
-        jmenublalblabla.add(cadQuarto);
+        jMenu3.add(cadQuarto);
 
-        jMenuBar1.add(jmenublalblabla);
+        jMenuBar1.add(jMenu3);
 
         func.setText("Funcionários");
 
@@ -172,13 +176,13 @@ public class FrameInicial extends javax.swing.JFrame {
 
         jMenu5.setText("Controle de Estoque");
 
-        pesqestoq.setText("Pesquisa Estoque");
-        pesqestoq.addActionListener(new java.awt.event.ActionListener() {
+        editestoque.setText("Insere Estoque");
+        editestoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesqestoqActionPerformed(evt);
+                editestoqueActionPerformed(evt);
             }
         });
-        jMenu5.add(pesqestoq);
+        jMenu5.add(editestoque);
 
         estoque.setText("Estoque");
         estoque.addActionListener(new java.awt.event.ActionListener() {
@@ -233,17 +237,22 @@ public class FrameInicial extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void importFunc(Model.ModelFuncionario func){
+    Model.ModelFuncionario mod = new Model.ModelFuncionario();
+    mod = func;
+    String nome = func.getNome_funcionario();
+    nameUser.setText(nome);
+    }
     private void log_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_outActionPerformed
              this.dispose();
         FrameLogin log = new FrameLogin();
         log.setVisible(true);   
     }//GEN-LAST:event_log_outActionPerformed
 
-    private void pesqestoqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqestoqActionPerformed
+    private void editestoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editestoqueActionPerformed
         FormPesquisaEstoque pesqestoq = new FormPesquisaEstoque();
         pesqestoq.setVisible(true);
-    }//GEN-LAST:event_pesqestoqActionPerformed
+    }//GEN-LAST:event_editestoqueActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         this.dispose();
@@ -256,7 +265,7 @@ public class FrameInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutActionPerformed
 
     private void aboutMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_aboutMenuSelected
-JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about");
+JOptionPane.showMessageDialog(null, "Bed Management System, Programa em alpha 0.0.0.0.0.0.0.0.0.0.0.0.1\n Produzido por: Alexandre, Alexandra e Jonathan");
     }//GEN-LAST:event_aboutMenuSelected
 
     private void cadhospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadhospedeActionPerformed
@@ -270,13 +279,40 @@ JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about"
     }//GEN-LAST:event_pesquisahospedeActionPerformed
 
     private void pesqfuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqfuncActionPerformed
-        FormPesquisaFuncionario formpesquisafunc = new FormPesquisaFuncionario();
-        formpesquisafunc.setVisible(true);    
+        Controller.ControlDBFuncionario dbfunc = new Controller.ControlDBFuncionario();
+        Model.ModelFuncionario func1 = new Model.ModelFuncionario();
+        try {
+            func1 = dbfunc.buscaNome(nameUser.getText());
+               if(func1.getAtuacao().equals("Gerente")){
+                 FormPesquisaFuncionario formpesqfunc = new FormPesquisaFuncionario();
+        formpesqfunc.setVisible(true);   
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Você não tem Privilégios sobre esta função", "Erro de Privilégios", JOptionPane.ERROR_MESSAGE);
+
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }//GEN-LAST:event_pesqfuncActionPerformed
 
     private void cadfuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadfuncActionPerformed
-        FormFuncionario1 formcadfunc = new FormFuncionario1();
-        formcadfunc.setVisible(true);
+        Controller.ControlDBFuncionario dbfunc = new Controller.ControlDBFuncionario();
+        Model.ModelFuncionario func1 = new Model.ModelFuncionario();
+        try {
+            func1 = dbfunc.buscaNome(nameUser.getText());
+               if(func1.getAtuacao().equals("Gerente")){
+                 FormFuncionario1 formcadfunc = new FormFuncionario1();
+        formcadfunc.setVisible(true);   
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Você não tem Privilégios sobre esta função", "Erro de Privilégios", JOptionPane.ERROR_MESSAGE);
+
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_cadfuncActionPerformed
 
@@ -286,27 +322,48 @@ JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about"
     }//GEN-LAST:event_cadservicoActionPerformed
 
     private void servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicoActionPerformed
-        FormServico serv = new FormServico();
+        FormServico serv = null;
+        try {
+            serv = new FormServico();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         serv.setVisible(true);
     }//GEN-LAST:event_servicoActionPerformed
 
     private void estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estoqueActionPerformed
-        FormEstoque estoq = new FormEstoque();
+        FormEstoque estoq = null;
+        try {
+            estoq = new FormEstoque();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         estoq.setVisible(true);
     }//GEN-LAST:event_estoqueActionPerformed
 
     private void cadQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadQuartoActionPerformed
-        FormCadastroQuarto cadquart = new FormCadastroQuarto();
+        FormCadastroQuarto cadquart = null;
+        try {
+            cadquart = new FormCadastroQuarto();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cadquart.setVisible(true);
     }//GEN-LAST:event_cadQuartoActionPerformed
 
     private void quartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quartActionPerformed
-        FormQuartos quarts = new FormQuartos();
+
+        FormQuartos quarts = null;
+        try {
+            quarts = new FormQuartos();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         quarts.setVisible(true);
     }//GEN-LAST:event_quartActionPerformed
 
     private void testeMenuSelected(javax.swing.event.MenuEvent evt){
-JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about");
+JOptionPane.showMessageDialog(null, "Bed Management System, Programa em alpha 0.0.0.0.0.0.0.0.0.0.0.0.1");
         
     }
     
@@ -352,21 +409,21 @@ JOptionPane.showMessageDialog(null, "Eu sou um software que precisa de um about"
     private javax.swing.JMenuItem cadfunc;
     private javax.swing.JMenuItem cadhospede;
     private javax.swing.JMenuItem cadservico;
+    private javax.swing.JMenuItem editestoque;
     private javax.swing.JMenuItem estoque;
     private javax.swing.JMenu func;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JMenu jmenublalblabla;
     private javax.swing.JMenuItem log_out;
     private javax.swing.JMenu logout;
     private javax.swing.JTextField nameUser;
-    private javax.swing.JMenuItem pesqestoq;
     private javax.swing.JMenuItem pesqfunc;
     private javax.swing.JMenuItem pesquisahospede;
     private javax.swing.JMenuItem quart;

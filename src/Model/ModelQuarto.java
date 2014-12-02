@@ -11,14 +11,14 @@ package Model;
  * @author Jol
  */
 public class ModelQuarto {
-    private int cod_quarto;
-    private int num_cam;
-    private int num_acomo;
-    private String tipo_quarto;
-    private boolean disponibilidade_quarto;
-    private float preco_quarto;
-    private int andar;
-    private int num_quarto;
+    public int cod_quarto;
+    public int num_cam;
+    public int num_acomo;
+    public String tipo_quarto;
+    public boolean disponibilidade_quarto;
+    public float preco_quarto;
+    public int andar;
+    public int num_quarto;
 
     public int getCod_quarto() {
         return cod_quarto;
