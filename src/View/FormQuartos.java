@@ -6,17 +6,36 @@
 
 package View;
 
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jol
  */
 public class FormQuartos extends javax.swing.JFrame {
 
+    public void ComboBox() throws SQLException{
+        Controller.ControlDBQuarto c1 = new Controller.ControlDBQuarto();
+        ResultSet rs = c1.FillCombo();
+        while(rs.next()){
+            qtbox.addItem(rs.getInt("num_quarto"));
+        }
+    }
     /**
      * Creates new form FormQuartos
      */
-    public FormQuartos() {
+    public FormQuartos() throws SQLException {
         initComponents();
+        ComboBox();
+         URL iconURL = getClass().getResource("/hotelicon.png");
+    ImageIcon icon = new ImageIcon(iconURL);
+    this.setIconImage(icon.getImage());
     }
 
     /**
@@ -30,41 +49,128 @@ public class FormQuartos extends javax.swing.JFrame {
 
         jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        qtbox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        codquarto = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        numaco = new javax.swing.JTextField();
+        tipoqt = new javax.swing.JTextField();
+        dispoqt = new javax.swing.JTextField();
+        preco = new javax.swing.JTextField();
+        andar = new javax.swing.JTextField();
+        editbutton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        numcama = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        qtbox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                qtboxItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Quarto:");
 
-        jLabel2.setText("jLabel2");
+        jLabel3.setText("Numero de acomodações");
+
+        jLabel4.setText("Tipo de quarto");
+
+        jLabel5.setText("Disponibilidade");
+
+        jLabel6.setText("Preço");
+
+        jLabel7.setText("Andar");
+
+        editbutton.setText("Editar");
+        editbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editbuttonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Numero de camas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(editbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(codquarto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(qtbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(numcama, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(andar)
+                            .addComponent(preco)
+                            .addComponent(dispoqt)
+                            .addComponent(tipoqt)
+                            .addComponent(numaco))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(qtbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(0, 166, Short.MAX_VALUE))
+                .addComponent(codquarto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(numcama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(numaco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tipoqt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(dispoqt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(andar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editbutton)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,7 +191,58 @@ public class FormQuartos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbuttonActionPerformed
+        Controller.ControlDBQuarto dbq = new Controller.ControlDBQuarto();
+        Model.ModelQuarto q1 = new Model.ModelQuarto();
+        q1.setNum_quarto((int) qtbox.getSelectedItem());
+        q1.setNum_acomo(Integer.parseInt(numaco.getText()));
+        if(dispoqt.getText().equals("Disponivel")){
+            q1.setDisponibilidade_quarto(true);
+        }
+        else{
+            q1.setDisponibilidade_quarto(false);
+        }
+       q1.setNum_cam(Integer.parseInt(numcama.getText()));
+       q1.setCod_quarto(Integer.parseInt(codquarto.getText()));
+       q1.setPreco_quarto(Float.parseFloat(preco.getText()));
+       q1.setAndar(Integer.parseInt(andar.getText()));
+       q1.setTipo_quarto(tipoqt.getText());
+       try {
+            dbq.Atualiza(q1.getCod_quarto(), q1.getNum_cam(), q1.getNum_acomo(),q1.getTipo_quarto() ,q1.getPreco_quarto(), q1.getAndar(),   q1.getNum_quarto() , q1.isDisponibilidade_quarto() );
+            JOptionPane.showMessageDialog(null, "Sucesso");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FormQuartos.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, "Algo deu errado!", "Erro", JOptionPane.ERROR_MESSAGE);
+        
+        }
+       dispose();
+    }//GEN-LAST:event_editbuttonActionPerformed
+
+    private void qtboxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_qtboxItemStateChanged
+    Controller.ControlDBQuarto dbq = new Controller.ControlDBQuarto();
+    Model.ModelQuarto q1 = new Model.ModelQuarto();
+        try {   
+            q1 = dbq.buscaPeloNumero((int) qtbox.getSelectedItem());
+            numaco.setText(Integer.toString(q1.getNum_acomo()));
+            tipoqt.setText(q1.getTipo_quarto());
+            if(q1.isDisponibilidade_quarto() == true){
+                dispoqt.setText("Disponivel");
+            }
+            else{
+                dispoqt.setText("Não Disponivel");
+            } 
+            preco.setText(Float.toString(q1.getPreco_quarto()));
+            andar.setText(Integer.toString(q1.getAndar()));
+            numcama.setText(Integer.toString(q1.getNum_cam()));
+            codquarto.setText(Integer.toString(q1.getCod_quarto()));
+        } catch (SQLException ex) {
+            Logger.getLogger(FormQuartos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_qtboxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -117,16 +274,34 @@ public class FormQuartos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuartos().setVisible(true);
+                try {
+                    new FormQuartos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FormQuartos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JTextField andar;
+    private javax.swing.JLabel codquarto;
+    private javax.swing.JTextField dispoqt;
+    private javax.swing.JButton editbutton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTextField numaco;
+    private javax.swing.JTextField numcama;
+    private javax.swing.JTextField preco;
+    private javax.swing.JComboBox qtbox;
+    private javax.swing.JTextField tipoqt;
     // End of variables declaration//GEN-END:variables
 }

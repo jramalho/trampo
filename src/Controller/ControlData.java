@@ -15,9 +15,15 @@ import java.util.Date;
  * @author Jol
  */
 public class ControlData {
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    public SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     public Date ConvertData(String data) throws ParseException{
         return formato.parse(data);
         
 }
+    public String ConvertDataToLong(String Data){
+        String a;
+        String ndata[]=Data.split("/");
+        a = ndata[2]+"-"+ndata[1]+"-"+ndata[0];
+        return a;
+    }
 }

@@ -7,9 +7,11 @@
 package View;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,10 +24,9 @@ public class FrameLogin extends javax.swing.JFrame {
      */
     public FrameLogin() {
     initComponents();
-    URL iconURL = getClass().getResource("/trampo/hotelicon.png");
+        URL iconURL = getClass().getResource("/hotelicon.png");
     ImageIcon icon = new ImageIcon(iconURL);
     this.setIconImage(icon.getImage());
-
     }
 
     /**
@@ -128,10 +129,27 @@ public class FrameLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConectbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConectbuttonActionPerformed
-        // TODO add your handling code here:
+        Controller.ControlDBFuncionario login = new Controller.ControlDBFuncionario();
+        Model.ModelFuncionario log = new Model.ModelFuncionario();
+        if((campuser.getText().equals("")) && (campsenha.getText().equals(""))){
+            JOptionPane.showMessageDialog(null, "Nada foi digitado, Por favor insira a informação correta nos campos", "Erro de Login", JOptionPane.ERROR_MESSAGE);           
+        }
+        String user = campuser.getText();
+        try {
+        log = login.buscaLogin(user);       
+        if((log.getUsername().equals(campuser.getText())) && (log.getSenha().equals(campsenha.getText()))){
         dispose();
         FrameInicial formaloca = new FrameInicial();
+        formaloca.importFunc(log);
         formaloca.setVisible(true);    
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Dados incorretos! Por favor verifique e insira novamente", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_ConectbuttonActionPerformed
 
     private void campsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campsenhaActionPerformed

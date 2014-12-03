@@ -12,12 +12,12 @@ package Model;
  */
 public class ModelFuncionario {
     private int cod_funcionario;
-    private String nome_funcionario;
-    private String CPF_funcionario;
-    private String RG_funcionario;
-    private String atuacao;
-    private String senha;
-    private String username;
+    public String nome_funcionario;
+    public String CPF_funcionario;
+    public String RG_funcionario;
+    public String atuacao;
+    public String senha;
+    public String username;
 
     public int getCod_funcionario() {
         return cod_funcionario;

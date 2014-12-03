@@ -11,9 +11,9 @@ package Model;
  * @author Jol
  */
 public class ModelEstoque {
-    private int cod_estoque;
-    private String tipo_estoque;
-    private int quantidade_estoque;
+    public int cod_estoque;
+    public String tipo_estoque;
+    public int quantidade_estoque;
 
     public int getCod_estoque() {
         return cod_estoque;

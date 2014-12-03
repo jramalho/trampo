@@ -6,19 +6,19 @@
 
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
  * @author Jol
  */
 public class ModelHospede {
-    private int cod_cliente;
-    private String nome_cliente;
-    private String RG_cliente;
-    private String CPF_cliente;
-    private String tipo_cliente;
-    private Date data_nasc_cliente;
+    public int cod_cliente;
+    public String nome_cliente;
+    public String RG_cliente;
+    public String CPF_cliente;
+    public String tipo_cliente;
+    public java.sql.Date data_nasc_cliente;
 
     public int getCod_cliente() {
         return cod_cliente;
@@ -64,9 +64,7 @@ public class ModelHospede {
         return data_nasc_cliente;
     }
 
-    public void setData_nasc_cliente(Date data_nasc_cliente) {
+    public void setData_nasc_cliente(java.sql.Date data_nasc_cliente) {
         this.data_nasc_cliente = data_nasc_cliente;
     }
-
- 
 }
