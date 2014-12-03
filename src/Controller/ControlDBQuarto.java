@@ -51,7 +51,10 @@ public void Atualiza(int cod_quarto, int num_cama, int num_acomod, String tipo, 
             statement.setInt(6, andar);
             statement.setInt(7, num_quarto);
             statement.setBoolean(8, disponibilidade);
+<<<<<<< HEAD
             statement.setInt(9, cod_quarto);
+=======
+>>>>>>> origin/master
             statement.execute();
         } catch (SQLException e) {
             System.out.println("Erro:" + e);

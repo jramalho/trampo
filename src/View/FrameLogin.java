@@ -137,7 +137,14 @@ public class FrameLogin extends javax.swing.JFrame {
         String user = campuser.getText();
         try {
         log = login.buscaLogin(user);       
+<<<<<<< HEAD
         if((log.getUsername().equals(campuser.getText())) && (log.getSenha().equals(campsenha.getText()))){
+=======
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(log.getUsername().equals(campuser.getText()) && (log.getSenha().equals(campsenha.getText()))){
+>>>>>>> origin/master
         dispose();
         FrameInicial formaloca = new FrameInicial();
         formaloca.importFunc(log);
@@ -146,10 +153,13 @@ public class FrameLogin extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Dados incorretos! Por favor verifique e insira novamente", "Erro de Login", JOptionPane.ERROR_MESSAGE);
         }
+<<<<<<< HEAD
         } catch (SQLException ex) {
             Logger.getLogger(FrameLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+=======
+>>>>>>> origin/master
     }//GEN-LAST:event_ConectbuttonActionPerformed
 
     private void campsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campsenhaActionPerformed

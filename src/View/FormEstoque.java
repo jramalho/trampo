@@ -30,13 +30,22 @@ public class FormEstoque extends javax.swing.JFrame {
     DefaultTableModel dtm = new  DefaultTableModel();
     Vector nom_col = new Vector();
     Vector info = new Vector();
+<<<<<<< HEAD
     for(int i=1;i<col+1;i++){
+=======
+    for(int i=1;i<col;i++){
+>>>>>>> origin/master
         nom_col.addElement(rsmeta.getColumnName(i));
     }
     dtm.setColumnIdentifiers(nom_col);
     while(rs.next()){
+<<<<<<< HEAD
         info = new Vector();
         for (int j=1;j<col+1;j++){
+=======
+        info= new Vector();
+        for (int j=1;j<col;j++){
+>>>>>>> origin/master
             info.addElement(rs.getString(j));
         }
     dtm.addRow(info);
@@ -65,6 +74,12 @@ public FormEstoque() throws SQLException {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+<<<<<<< HEAD
+
+        jMenu1.setText("jMenu1");
+=======
+        jButton1 = new javax.swing.JButton();
+>>>>>>> origin/master
 
         jMenu1.setText("jMenu1");
 
@@ -72,6 +87,7 @@ public FormEstoque() throws SQLException {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+<<<<<<< HEAD
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -103,6 +119,39 @@ public FormEstoque() throws SQLException {
             },
             new String [] {
                 "Título 1", "Título 2", "Título 3"
+=======
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+>>>>>>> origin/master
             }
         ));
         jScrollPane1.setViewportView(tabela);
@@ -184,6 +233,10 @@ public FormEstoque() throws SQLException {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton jButton1;
+>>>>>>> origin/master
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

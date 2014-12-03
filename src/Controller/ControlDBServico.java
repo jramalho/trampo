@@ -22,6 +22,7 @@ import java.util.Set;
 public class ControlDBServico {
           public void insere(Model.ModelServico es) throws SQLException {
         try {
+<<<<<<< HEAD
                 String sql = "INSERT INTO servico (cod_servico,tipo,area,cod_funcionario,cod_estoque) VALUES (?, ?, ?, ?, ?)";
             Connection conexao = ControlConecBD.conectarBanco();
             PreparedStatement statement = conexao.prepareStatement(sql);
@@ -30,6 +31,15 @@ public class ControlDBServico {
             statement.setString(3, es.area_servico);
             statement.setInt(4, es.codfunc);
             statement.setInt(5, es.codestoque);
+=======
+                String sql = "INSERT INTO servico (tipo,area,cod_funcionario,cod_estoque) VALUES (?, ?, ?, ?)";
+            Connection conexao = ControlConecBD.conectarBanco();
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1, es.tipo_servico);
+            statement.setString(2, es.area_servico);
+            statement.setInt(3, es.codfunc);
+            statement.setInt(4, es.codestoque);
+>>>>>>> origin/master
             statement.execute();
         } catch (SQLException e) {
             System.out.println("Erro:" + e);

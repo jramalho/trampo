@@ -265,7 +265,11 @@ public class FrameInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutActionPerformed
 
     private void aboutMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_aboutMenuSelected
+<<<<<<< HEAD
 JOptionPane.showMessageDialog(null, "Bed Manager System, Programa em alpha 0.0.0.0.0.0.0.0.0.0.0.0.1\n Produzido por: Alexandre, Alexandra e Jonathan");
+=======
+JOptionPane.showMessageDialog(null, "Bed Management System, Programa em alpha 0.0.0.0.0.0.0.0.0.0.0.0.1\n Produzido por: Alexandre, Alexandra e Jonathan");
+>>>>>>> origin/master
     }//GEN-LAST:event_aboutMenuSelected
 
     private void cadhospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadhospedeActionPerformed

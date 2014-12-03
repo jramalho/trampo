@@ -74,11 +74,14 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="codestoq" min="-2" pref="50" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="codfunc" min="-2" pref="50" max="-2" attributes="0"/>
+=======
+>>>>>>> origin/master
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -87,7 +90,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
                           <Component id="campcodsv" min="-2" pref="50" max="-2" attributes="0"/>
+=======
+                          <Component id="codfunc" min="-2" pref="50" max="-2" attributes="0"/>
+>>>>>>> origin/master
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>

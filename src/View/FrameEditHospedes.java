@@ -232,6 +232,7 @@ public class FrameEditHospedes extends javax.swing.JFrame {
     java.sql.Date d1 = java.sql.Date.valueOf(ndata);
     try {
            con.Atualiza(Integer.parseInt(codcliente.getText()),campnome.getText(), camprg.getText(), campcpf.getText(), camptipo.getText(), d1 );
+<<<<<<< HEAD
            JOptionPane.showMessageDialog(null, "Sucesso");
            dispose();
     } catch (SQLException ex) {
@@ -239,6 +240,11 @@ public class FrameEditHospedes extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(null, "Algo deu errado, tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
 
     }
+=======
+       } catch (SQLException ex) {
+           Logger.getLogger(FrameEditHospedes.class.getName()).log(Level.SEVERE, null, ex);
+       }
+>>>>>>> origin/master
     }//GEN-LAST:event_EditarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

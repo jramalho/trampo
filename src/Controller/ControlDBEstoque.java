@@ -19,12 +19,20 @@ import java.sql.SQLException;
 public class ControlDBEstoque {
     public  void insere(Model.ModelEstoque es) throws SQLException {
         try {
+<<<<<<< HEAD
                 String sql = "INSERT INTO estoque (cod_estoque,tipo,quantidade) VALUES (?, ?, ?)";
             Connection conexao = ControlConecBD.conectarBanco();
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setInt(1, es.cod_estoque);
             statement.setString(2, es.tipo_estoque);
             statement.setInt(3, es.quantidade_estoque);
+=======
+                String sql = "INSERT INTO estoque (tipo,quantidade) VALUES (?, ?)";
+            Connection conexao = ControlConecBD.conectarBanco();
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1, es.tipo_estoque);
+            statement.setInt(2, es.quantidade_estoque);
+>>>>>>> origin/master
             statement.execute();
         } catch (SQLException e) {
             System.out.println("Erro:" + e);
@@ -83,7 +91,10 @@ public void Atualiza(int cod_estoque, String tipo, int quantidade) throws SQLExc
 
         }
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> origin/master
         public ResultSet FillTable() throws SQLException{
             String sql="select * from estoque";
             Connection conexao = conectarBanco();

@@ -109,17 +109,24 @@ public class FormCadastroServico extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(codestoq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(codfunc, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+>>>>>>> origin/master
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
                         .addComponent(campcodsv, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                        .addComponent(codfunc, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> origin/master
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,18 +190,26 @@ public class FormCadastroServico extends javax.swing.JFrame {
         serv.setTipo_servico(tiposerv.getText());
         serv.setArea_servico(areaserv.getText());
         serv.setCodestoque(parseInt(codestoq.getText()));
+<<<<<<< HEAD
         serv.setCod_servico(parseInt(campcodsv.getText()));
         try {
             dbs.insere(serv);
             dispose();
+=======
+        try {
+            dbs.insere(serv);
+>>>>>>> origin/master
         } catch (SQLException ex) {
             Logger.getLogger(FormCadastroServico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cadbutActionPerformed
+<<<<<<< HEAD
 
     private void campcodsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campcodsvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campcodsvActionPerformed
+=======
+>>>>>>> origin/master
 
     /**
      * @param args the command line arguments
@@ -234,7 +249,10 @@ public class FormCadastroServico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField areaserv;
     private javax.swing.JButton cadbut;
+<<<<<<< HEAD
     private javax.swing.JTextField campcodsv;
+=======
+>>>>>>> origin/master
     private javax.swing.JTextField codestoq;
     private javax.swing.JTextField codfunc;
     private javax.swing.JButton jButton2;

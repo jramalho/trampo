@@ -9,10 +9,18 @@ package View;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+=======
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+>>>>>>> origin/master
 
 /**
  *
@@ -209,6 +217,7 @@ public class FormQuartos extends javax.swing.JFrame {
        q1.setCod_quarto(Integer.parseInt(codquarto.getText()));
        q1.setPreco_quarto(Float.parseFloat(preco.getText()));
        q1.setAndar(Integer.parseInt(andar.getText()));
+<<<<<<< HEAD
        q1.setTipo_quarto(tipoqt.getText());
        try {
             dbq.Atualiza(q1.getCod_quarto(), q1.getNum_cam(), q1.getNum_acomo(),q1.getTipo_quarto() ,q1.getPreco_quarto(), q1.getAndar(),   q1.getNum_quarto() , q1.isDisponibilidade_quarto() );
@@ -220,6 +229,8 @@ public class FormQuartos extends javax.swing.JFrame {
         
         }
        dispose();
+=======
+>>>>>>> origin/master
     }//GEN-LAST:event_editbuttonActionPerformed
 
     private void qtboxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_qtboxItemStateChanged
